@@ -53,6 +53,7 @@ export default function HomePage() {
     setWalletAddress(undefined);
     setConnected(false);
     setSelectedWallet("");
+    setAssets(null);
   }
 
   useEffect(() => {
