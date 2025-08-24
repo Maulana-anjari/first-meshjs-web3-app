@@ -62,6 +62,7 @@ React context is essential for building web applications. It allows you to easil
 Open `src/app/providers.tsx`, import and include `MeshProvider`:
 
 ```tsx
+"use client";
 import "@meshsdk/react/styles.css";
 import { MeshProvider } from "@meshsdk/react";
 
@@ -69,6 +70,35 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return <MeshProvider>{children}</MeshProvider>;
 }
 ```
+
+#### 1.1. Use Providers in layout.tsx
+
+To enable Mesh context throughout your app, wrap your layout with the Providers component. This ensures all client components can access Mesh context.
+
+Open `src/app/layout.tsx` and update it like this:
+
+```tsx
+import "./globals.css";
+import { Providers } from "./providers";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
+}
+```
+
+##### Why use a separate Providers component?
+
+Next.js layouts (`layout.tsx`) are server components by default and cannot use client-only libraries directly. MeshProvider requires `"use client"`, so it must be placed inside a client component. By creating a separate `Providers` component with `"use client"`, you can safely use MeshProvider and other client-only providers, while keeping your layout as a server component for optimal performance.
 
 ### 2. Add connect wallet component and check wallet's assets
 
