@@ -1,3 +1,29 @@
+/**
+ * HomePage Component
+ *
+ * This page provides a user interface for connecting to a Cardano browser wallet using MeshJS.
+ *
+ * Features:
+ * - Detects installed Cardano wallets (e.g., Eternl, Nami, Flint, Lace) via MeshJS.
+ * - Allows users to select and connect to a wallet.
+ * - Displays the connected wallet's address.
+ * - Fetches and displays wallet assets after connection.
+ * - Provides a disconnect button to reset the wallet state.
+ * - Shows helpful messages if no wallet is detected.
+ *
+ * State Management:
+ * - installedWallets: List of detected wallets.
+ * - selectedWallet: Name of the currently selected wallet.
+ * - wallet: The enabled BrowserWallet instance.
+ * - walletAddress: The address of the connected wallet.
+ * - isConnecting: Loading state for wallet connection.
+ * - connected: Boolean indicating if a wallet is connected.
+ * - assets: Assets fetched from the connected wallet.
+ *
+ * Usage:
+ * - Users can connect/disconnect their Cardano wallet and view wallet assets.
+ * - The UI adapts based on connection state and available wallets.
+ */
 "use client";
 
 import { useEffect, useState } from "react";
